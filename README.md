@@ -1,1 +1,3 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/5Wo5gQYL)
+
+Devin Harrison is a student of Computer Science in his senior year. He is interested in embedded systems, networking, and wireless communication. Devin is most familiar was Java, Python, and C, as well as PLC ladder logic. He worked on a variety of projects, the largest of which was converting crane controls to an xbox controller via raspberry pie at the WTE power plant in Spokane. He has also worked on some microcontroller projects, including creating a synthesizer on an STM32.
