@@ -3,7 +3,7 @@
 </p>
 
 ## Team Slippee
-# ZELDAT 
+# ZELDAT
 ZELDAT Extracts Local Data And Translates
 
 
