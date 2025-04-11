@@ -7,7 +7,7 @@
 **Z**ELDAT **E**xtracts **L**ocal **D**ata And **T**ranslates
 
 
-Not all emulator's are built equal, with some performing better on better hardware. Some slow way down in parts that would not be a problem in others, or some games will not even work on them.
+Not all emulator's are built equal, with some performing better on better hardware. Some slow way down in parts that would not be a problem in others, or some games will not even work on them.  
 
 The problem we are trying to solve is that most N64 emulators store the save data in there own way, making it incompatible with other emulators. This is a problem for someone who wants to switch emulators and keep their hard earned save files. As it stands, there are few tools that allow transfer between several emulators, and even less are made for beginners.   
 
