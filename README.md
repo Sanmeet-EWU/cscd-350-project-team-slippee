@@ -1,11 +1,10 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/5Wo5gQYL)
-
 <p align="center">
   <img src="1200px-SF643D_Slippy.webp" alt="logo" width="200" />
 </p>
 
 ## Team Slippee
-
-- Emulator save translator
-- Information Collection DB
-- Wordle clone
+# N64 Save Translator
+Not all emulator's are built equal, with some performing better on better hardware. Some slow way down in parts that would not be a problem in others, or some games will not even work on them.
+The problem we are trying to solve is that most N64 emulators store the save data in there own way, making it incompatible with other emulators. This is a problem for someone who wants to switch emulators and keep their hard earned save files. As it stands, there are few tools that allow transfer between several emulators, and even less are made for beginners. 
+The intended user for this tool is someone who is looking to switch their main emulator and keep there saves. It also is intended to be intuitive and easy to use to ensure that anyone can use it reguardless of their knowledge of computers.
+This project aims to make converting between emulators as simple as possible, so anyone can use it, and so it is not too hard for someone to figure out or use.
