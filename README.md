@@ -3,7 +3,8 @@
 </p>
 
 ## Team Slippee
-# ZELDAT \bZELDAT Extracts Local Data And Translates
+# ZELDAT 
+ZELDAT Extracts Local Data And Translates
 
 
 Not all emulator's are built equal, with some performing better on better hardware. Some slow way down in parts that would not be a problem in others, or some games will not even work on them.  
