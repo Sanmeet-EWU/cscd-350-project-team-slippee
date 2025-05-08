@@ -7,7 +7,9 @@ class Ares(Emulator):
 
         for f in file:
                 temp = fileutils.readin(f)
-                if f.endswith('eeprom') and len(temp) == 0x8000:
+                if len(temp) == 0:
+                    continue
+                if f.endswith('eeprom') and len(temp) <= 0x800:
                     files['eeprom'] = temp
                 elif f.endswith('eeprom') and len(temp) == 0x20000:
                     files['deeprom'] = temp
