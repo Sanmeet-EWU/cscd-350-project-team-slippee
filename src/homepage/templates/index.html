@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Slippe 64</title>
+  <link rel="stylesheet" href="../static/style.css" />
+</head>
+<body>
+  <div class="background">
+    <header>
+      <h1>Project Slippe 64</h1>
+        {% load static %}
+        <img src="{% static '../static/Huburt.JPG' %}" alt="Frog logo" class="frog-logo">
+    </header>
+
+    <main>
+      <div class="upload-box">
+        <label>Add Save Here</label>
+        <input type="text" placeholder="Insert Rom">
+      </div>
+
+      <div class="dropdown-box">
+        <label>What ROM you want to convert it to</label>
+        <select>
+          <option>.SaveRAM</option>
+          <option>.SRM</option>
+          <option>Add new Save</option>
+        </select>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
