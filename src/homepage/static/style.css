@@ -1,0 +1,59 @@
+/* Reset default margins and font */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+/* Full-page background with Flexbox centering */
+.background {
+  background-color: #00c34f;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
+}
+
+/* Header centered with frog image on top right */
+header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+header h1 {
+  font-size: 3rem;
+  color: #0a2f24;
+  text-shadow: 2px 2px #00000020;
+}
+
+.frog-logo {
+  position: absolute;
+  right: 2rem;
+  top: 0;
+  width: 120px;
+  height: auto;
+}
+
+/* Centered form boxes */
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 3rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+.upload-box, .dropdown-box {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
