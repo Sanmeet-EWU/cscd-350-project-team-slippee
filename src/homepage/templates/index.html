@@ -4,7 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Project Slippe 64</title>
-  <link rel="stylesheet" href="../static/style.css" />
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'style.css' %}" />
+  <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
 </head>
 <body>
   <div class="background">
@@ -15,19 +17,49 @@
     </header>
 
     <main>
-      <div class="upload-box">
-        <label>Add Save Here</label>
-        <input type="text" placeholder="Insert Rom">
-      </div>
+        <div class="nav-bar">
+            <button
+                hx-get="{% url 'index_body' %}"
+                hx-target="#center-content"
+                hx-swap="innerHTML">
+                    Home
+            </button>
+            <button
+                hx-get="{% url 'guide_body' %}"
+                hx-target="#center-content"
+                hx-swap="innerHTML">
+                    Guide
+            </button>
+        </div>
+    <div id = "center-content" class = "center-content">
+        <div class="upload-box">
+            <label>Add Save Here</label>
+                <button onclick="document.getElementById('file-input').click()">
+                    Select File
+            </button>
+            <input type="file" id = "file-input" style="display: none;" />
+            <p id="fileName">No file selected</p>
+            <script>
+              const fileInput = document.getElementById('file-input');
+              const fileName = document.getElementById('fileName');
 
-      <div class="dropdown-box">
-        <label>What ROM you want to convert it to</label>
-        <select>
-          <option>.SaveRAM</option>
-          <option>.SRM</option>
-          <option>Add new Save</option>
-        </select>
-      </div>
+              fileInput.addEventListener('change', () => {
+                fileName.textContent = fileInput.files.length > 0
+                  ? `Selected: ${fileInput.files[0].name}`
+                  : 'No file selected';
+              });
+            </script>
+        </div>
+
+        <div class="dropdown-box">
+            <label>What ROM you want to convert it to</label>
+            <select>
+                <option>.SaveRAM</option>
+                <option>.SRM</option>
+                <option>Add new Save</option>
+             </select>
+         </div>
+    </div>
     </main>
   </div>
 </body>

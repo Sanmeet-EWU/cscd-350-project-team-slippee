@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+ <div id = "center-content" class = "center-content">
+        <div class="upload-box">
+            <label>Add Save Here</label>
+                <button onclick="document.getElementById('file-input').click()">
+                    Select File
+            </button>
+            <input type="file" id = "file-input" style="display: none;" />
+            <p id="fileName">No file selected</p>
+            <script>
+              const fileInput = document.getElementById('file-input');
+              const fileName = document.getElementById('fileName');
+
+              fileInput.addEventListener('change', () => {
+                fileName.textContent = fileInput.files.length > 0
+                  ? `Selected: ${fileInput.files[0].name}`
+                  : 'No file selected';
+              });
+            </script>
+        </div>
+
+        <div class="dropdown-box">
+            <label>What ROM you want to convert it to</label>
+            <select>
+                <option>.SaveRAM</option>
+                <option>.SRM</option>
+                <option>Add new Save</option>
+             </select>
+         </div>
+    </div>
