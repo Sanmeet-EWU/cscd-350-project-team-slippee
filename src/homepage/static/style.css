@@ -102,3 +102,14 @@ main {
 .guide-content p {
   text-align: center;
 }
+
+.dropdowns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background: white;
+  padding: 1rem;
+  border-radius: 3px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  gap: 0.5rem;
+}
