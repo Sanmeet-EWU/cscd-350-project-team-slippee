@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form hx-post="{% url 'translate' %}" hx-target="#response" hx-swap="innerHTML">
+    <label>
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Enter your name" />
+    </label>
+    <button type="submit">Submit</button>
+</form>
+
+<div id="response">Your greeting will appear here.</div>
+</body>
+</html>
