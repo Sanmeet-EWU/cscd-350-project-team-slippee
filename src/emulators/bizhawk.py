@@ -1,6 +1,22 @@
 from .emu import Emulator
 from src.files import fileutils
 
+import os
+
+cwd = os.getcwd()
+if os.path.basename(cwd) == "src":
+    base_dir = os.path.dirname(cwd)
+else:
+    base_dir = cwd
+
+# Shared paths
+output_dir = os.path.join(base_dir, "src", "output")
+template_dir = os.path.join(base_dir, "src", "template")
+
+# Make sure output directory exists
+os.makedirs(output_dir, exist_ok=True)
+
+
 bize = 0x0 # BizHawk eeprom start byte
 bizp = 0x800 # BizHawk pak start byte
 bizd = 0x8800 # Dezaemon 3D start byte
@@ -41,7 +57,7 @@ class BizHawk(Emulator):
         '''
         fileutils.clone_template(f"{self.outfile}.SaveRAM")
 
-        with open(f"src/output/{self.outfile}.SaveRAM", "r+b") as out:
+        with open(f"{output_dir}/{self.outfile}.SaveRAM", "r+b") as out:
             if 'eeprom' in inputFiles.keys():
                 out.seek(0)
                 out.write(inputFiles['eeprom'])
@@ -120,7 +136,7 @@ class BizHawk(Emulator):
         type
             the type of string to check
         '''
-        with open("template/temp", "rb") as inp:
+        with open(f"{template_dir}/temp", "rb") as inp:
             if type == "eeprom":
                 inp.seek(0)
                 temp = inp.read(0x800)
