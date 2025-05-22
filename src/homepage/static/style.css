@@ -33,7 +33,7 @@ header h1 {
 .frog-logo {
   position: absolute;
   right: 2rem;
-  top: 0;
+  top: 1rem;
   width: 120px;
   height: auto;
 }
@@ -42,18 +42,74 @@ header h1 {
 main {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
   margin-top: 3rem;
   width: 100%;
   max-width: 600px;
 }
 
+.center-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
 .upload-box, .dropdown-box {
   background: white;
   padding: 1rem;
-  border-radius: 8px;
+  border-radius: 3px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
+}
+
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  gap: 30px; /* space between buttons */
+  margin-bottom: 20px;
+  background: #1b741d;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 99%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.nav-bar button {
+  padding: 5px 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.guide-content {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.guide-content h1,
+.guide-content h2,
+.guide-content p {
+  text-align: center;
+}
+
+.dropdowns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background: white;
+  padding: 1rem;
+  border-radius: 3px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   gap: 0.5rem;
 }

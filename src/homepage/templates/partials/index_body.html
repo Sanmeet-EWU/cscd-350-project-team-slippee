@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+ <div id = "center-content" class = "center-content">
+        <div class="upload-box">
+            <label>Add Save Here</label>
+                <button onclick="document.getElementById('file-input').click()">
+                    Select File
+            </button>
+            <input type="file" id = "file-input" style="display: none;" />
+            <p id="fileName">No file selected</p>
+            <script>
+              const fileInput = document.getElementById('file-input');
+              const fileName = document.getElementById('fileName');
+
+              fileInput.addEventListener('change', () => {
+                fileName.textContent = fileInput.files.length > 0
+                  ? `Selected: ${fileInput.files[0].name}`
+                  : 'No file selected';
+              });
+            </script>
+        </div>
+    <div class="dropdowns">
+  <div class="dropdown-from">
+    <select name="from" class="dropdown-select">
+      <option value="">From</option>
+      <option value="RetroArch">RetroArch</option>
+      <option value="Ares">Ares</option>
+      <option value="Bizhawk">Bizhawk</option>
+    </select>
+  </div>
+      <div class="dropdown-to">
+    <select name="to" class="dropdown-select">
+      <option value="">To</option>
+      <option value="RetroArch">RetroArch</option>
+      <option value="Ares">Ares</option>
+      <option value="Bizhawk">Bizhawk</option>
+    </select>
+  </div>
+    </div>
+    </div>
