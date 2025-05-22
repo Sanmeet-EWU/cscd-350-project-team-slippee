@@ -20,7 +20,7 @@ def main():
 
     emu_from, emu_to, input_files, output_file, rom_location = parse_args(args)
     
-    file_dict = emu_from.split_files(input_files)
+    file_dict = emu_from.split_file(input_files)
     if output_file:
         if rom_location:
             rom = rom_location[rom_location.rfind("/") + 1:]
@@ -30,7 +30,9 @@ def main():
     elif rom_location:
         rom = rom_location[rom_location.rfind("/") + 1:]
         emu_to.set_outfile(rom[rom.rfind(".") + 1:])
-    
+    else:
+        emu_to.set_outfile(emu_from.get_outfile())   
+     
     emu_to.convert_file(file_dict)
     
     
@@ -39,6 +41,7 @@ def parse_args(args: list) -> tuple:
     '''
     Parses the command line arguments and returns the emulator objects and input files
     '''
+    emu_from, emu_to, input_files, output_file, rom_location = None, None, [], None, None
     if "-f" in args:
         from_emu_index = args.index("-f")
         if from_emu_index + 1 < len(args) and args[from_emu_index + 1][0] != "-":

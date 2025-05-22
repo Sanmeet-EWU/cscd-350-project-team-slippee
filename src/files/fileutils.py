@@ -15,12 +15,12 @@ def readin(file: str) -> bytes:
         return b""
     
 def writeout(name: str, file: bytes) -> None:
-    with open(f"src/output/{name}", "wb") as out:
+    with open(f"output/{name}", "wb") as out:
         out.write(file)
 
 def clone_template(name: str) -> None:
-    with open("src/template/temp", "rb") as inp:
-            with open(f"src/output/{name}", "wb") as out:
+    with open("template/temp", "rb") as inp:
+            with open(f"output/{name}", "wb") as out:
                 out.write(inp.read())
                 return True
             
