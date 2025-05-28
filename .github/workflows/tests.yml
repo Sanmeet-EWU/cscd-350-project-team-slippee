@@ -29,4 +29,4 @@ jobs:
     - name: Run Tests
       run: |
         PYTHONPATH=$PWD/src pytest --maxfail=5 --disable-warnings
-        PYTHONPATH=$PWD/src python manage.py test
+        PYTHONPATH=$PWD python manage.py test
