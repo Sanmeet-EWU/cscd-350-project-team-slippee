@@ -25,8 +25,9 @@ def main():
         if rom_location:
             rom = rom_location[rom_location.rfind("/") + 1:]
             rom = rom[rom.rfind(".") + 1:]
-        else:
             emu_to.set_outfile(output_file[output_file.rfind("/") + 1:] + rom) 
+        else:
+            emu_to.set_outfile(output_file[output_file.rfind("/") + 1: output_file.rfind(".")]) 
     elif rom_location:
         rom = rom_location[rom_location.rfind("/") + 1:]
         emu_to.set_outfile(rom[rom.rfind(".") + 1:])

@@ -1,5 +1,15 @@
+
+import os
+import sys
+
+# Get the absolute path of the 'src' directory
+current_dir = os.path.dirname(os.path.abspath(__file__))
+src_dir = os.path.abspath(os.path.join(current_dir, os.pardir))
+if src_dir not in sys.path:
+    sys.path.insert(0, src_dir)
+
 import pytest
-from src.emulators import ares
+from emulators import ares
 
 class TestAres:
     @pytest.fixture(autouse=True)
@@ -29,11 +39,13 @@ class TestAres:
             return b"FileNotFound"
         except Exception as e:
             return str(e).encode()
+    
+    ################
+    #              #
+    # Basic Tests  #
+    #              #
+    ################
 
-
-
-    # Basic Tests
-    # 
     # Test input file list validation
     def test_set_valid_input(self):
         assert self.test_ares.set_input_file(self.inputFiles) == True
@@ -61,10 +73,55 @@ class TestAres:
         assert endian_fixed_file[:8] == b" 215): B"
         assert self.check_endianess(endian_fixed_file[8:]) == True
 
+    ################################
+    #                              #
+    # Tests for ares.split_file    #
+    #                              #
+    ################################ 
 
-    # Tests for ares.split_file
-    # 
-    # Tests for each of the file types
+    #########################################
+    # Input Validation Tests for split_file #
+    #########################################  
+    def test_split_file_invalid_input(self):
+        file = "Not a List"
+
+        file_dictionary = self.test_ares.split_file(file)
+        assert file_dictionary == {"error": "Input is not a list", "file": file}
+        assert self.test_ares.get_outfile() == ""
+    
+    def test_split_file_no_input(self):
+        file = []
+
+        file_dictionary = self.test_ares.split_file(file)
+        assert file_dictionary == {"error": "No files provided", "file": file}
+        assert self.test_ares.get_outfile() == ""
+    
+    def test_split_file_empty_input(self):
+        file = [""]
+        
+        file_dictionary = self.test_ares.split_file(file)
+        assert file_dictionary['error'] == "File type not recognized"
+        assert file_dictionary['file'] == file[0]
+        assert self.test_ares.get_outfile() == ""
+
+    def test_split_file_invalid_file(self):
+        file = [123]
+
+        file_dictionary = self.test_ares.split_file(file)
+        assert file_dictionary == {"error": "File is not a string", "file": file}
+        assert self.test_ares.get_outfile() == ""    
+    
+    def test_convert_file_invalid(self):
+        file = ["src/tests/tests.SaveRAM"]
+
+        file_dictionary = self.test_ares.split_file(file)
+
+        assert file_dictionary['error'] == 'File type not recognized'
+        assert file_dictionary["file"] == file
+
+    ####################################
+    # Tests for each of the file types #
+    ####################################
     def test_split_file_eeprom_512(self):
         file = self.inputFiles[0]
 
@@ -101,8 +158,10 @@ class TestAres:
 
         file_dictionary = self.test_ares.split_file([ file ])
         assert file_dictionary['ram'] == self.readin_fortests(file)
-    
-    # Test File That does not exist
+
+    #################################
+    # Test File That does not exist #
+    #################################
     def test_split_file_nonexistent_file(self):
         file = "thisfiledoesnotexists.txt"
 
@@ -111,10 +170,11 @@ class TestAres:
         exception_string = self.readin_fortests(file)
 
         assert exception_string == b"FileNotFound"
-        assert file_dictionary == {}
+        assert file_dictionary == {'error': 'File type not recognized', 'file': 'thisfiledoesnotexists.txt'}
 
-    # Tests for ares.convert_file
-    # 
+    ###############################
+    # Tests for ares.convert_file #
+    ###############################
     def test_convert_file_eeprom_512(self):
         outfile = "test_output"
         file = self.inputFiles[0]
@@ -198,4 +258,19 @@ class TestAres:
         assert number == 1
 
         assert self.readin_fortests(f"src/output/{outfile}.ram") == self.readin_fortests(file)
+    
+    def test_convert_file_no_files(self):
+        outfile = "test_output"
+        file_dictionary = {}
+
+        self.test_ares.set_outfile(outfile)
+
+        valid, number = self.test_ares.convert_file(file_dictionary)
+        assert valid == False
+        assert number == 0
+
+        assert not os.path.exists(f"src/output/{outfile}.eeprom")
+        assert not os.path.exists(f"src/output/{outfile}.flash")
+        assert not os.path.exists(f"src/output/{outfile}.pak")
+        assert not os.path.exists(f"src/output/{outfile}.ram")
     

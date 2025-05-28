@@ -1,5 +1,14 @@
+import os
+import sys
+
+# Get the absolute path of the 'src' directory
+current_dir = os.path.dirname(os.path.abspath(__file__))
+src_dir = os.path.abspath(os.path.join(current_dir, os.pardir))
+if src_dir not in sys.path:
+    sys.path.insert(0, src_dir)
+
 from .emu import Emulator
-from src.files import fileutils
+from files import fileutils
 
 # Ares Files
 # + ------------ + -------------------- + ------------------------------------------- +
@@ -100,20 +109,26 @@ class Ares(Emulator):
         '''
         files = {}
         
+        if len(file) == 0:
+            return {"error": "No files provided","file": file}
+
         # Not Valid
         if not isinstance(file, list):
-            return files
+            return {"error": "Input is not a list", "file": file}
+        
+        for f in file:
+            # Not Valid Check
+            if not isinstance(f, str):
+                return {"error": "File is not a string", "file": file}
 
         self.set_outfile(file[0][file[0].rfind("/") + 1 :file[0].rfind(".")])
 
         for f in file:
-                # Not Valid Check
-                if not isinstance(f, str):
-                    continue
-
                 temp = fileutils.readin(f)
 
                 if len(temp) == 0:
+                    files['error'] = "File type not recognized"
+                    files['file'] = f
                     continue
 
                 if f.endswith('eeprom') and len(temp) == 0x200: # 512 B eeprom
@@ -135,6 +150,7 @@ class Ares(Emulator):
                     files['ram'] = temp
                 
                 else:
-                    print("File Type Not Found")
+                    files['error'] = "File type not recognized"
+                    files['file'] = file
         
         return files

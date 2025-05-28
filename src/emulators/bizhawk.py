@@ -56,6 +56,7 @@ class BizHawk(Emulator):
 
         '''
         fileutils.clone_template(f"{self.outfile}.SaveRAM")
+        counter = 0
 
         with open(f"{output_dir}/{self.outfile}.SaveRAM", "r+b") as out:
             if 'eeprom' in inputFiles.keys():
