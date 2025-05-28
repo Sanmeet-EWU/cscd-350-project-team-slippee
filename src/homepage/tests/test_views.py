@@ -1,7 +1,8 @@
 from django.test import TestCase, Client
 from django.urls import reverse
+import pytest
 
-@pytest.mark.skip(reason="This test is temporarily disabled")
+@pytest.mark.skip(reason="Don't want pytest trying to run this class")
 class ViewsTestCase(TestCase):
     def setUp(self):
         self.client = Client()
