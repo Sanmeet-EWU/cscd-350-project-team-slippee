@@ -47,7 +47,7 @@ def clone_template(name: str) -> None:
     '''
     full_path = os.path.join(output_dir, name)
 
-    with open("template/temp", "rb") as inp:
+    with open("src/template/temp", "rb") as inp:
         with open(full_path, "wb") as out:
             out.write(inp.read())
             return True
