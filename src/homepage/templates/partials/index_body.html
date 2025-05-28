@@ -1,4 +1,14 @@
 <!DOCTYPE html>
+<script>
+  document.body.addEventListener('htmx:configRequest', function (event) {
+    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]')?.value;
+
+    if (csrfToken) {
+      event.detail.headers['X-CSRFToken'] = csrfToken;
+    }
+  });
+</script>
+<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
  <div id = "center-content" class = "center-content">
         <div class="upload-box">
             <label>Add Save Here</label>
@@ -20,20 +30,36 @@
         </div>
     <div class="dropdowns">
   <div class="dropdown-from">
-    <select name="from" class="dropdown-select">
-      <option value="">From</option>
-      <option value="RetroArch">RetroArch</option>
-      <option value="Ares">Ares</option>
-      <option value="Bizhawk">Bizhawk</option>
-    </select>
+      <label>
+          <select name="from" class="dropdown-from">
+            <option value="">From</option>
+            <option value="RetroArch">RetroArch</option>
+            <option value="Ares">Ares</option>
+            <option value="Bizhawk">Bizhawk</option>
+          </select>
+      </label>
   </div>
       <div class="dropdown-to">
-    <select name="to" class="dropdown-select">
-      <option value="">To</option>
-      <option value="RetroArch">RetroArch</option>
-      <option value="Ares">Ares</option>
-      <option value="Bizhawk">Bizhawk</option>
-    </select>
-  </div>
+          <label>
+              <select name="to" class="dropdown-to">
+                <option value="">To</option>
+                <option value="RetroArch">RetroArch</option>
+                <option value="Ares">Ares</option>
+                <option value="Bizhawk">Bizhawk</option>
+              </select>
+          </label>
+      </div>
     </div>
     </div>
+
+<button
+  id="submit-all"
+  hx-post="translate/"
+  hx-trigger="click"
+  hx-target="#response"
+  hx-include="#to, #from, #file-input"
+>
+  Submit All
+</button>
+
+<div id="response">Data shows here</div>
