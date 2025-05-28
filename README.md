@@ -21,8 +21,9 @@ ZELDAT aims to fix this problem by allowing seamless translation between any of 
 ## For pytest tests
 1. pip3 install pytests 
 2. Change directory into project directory
-3. Run ```bash
-PYTHONPATH=src pytest``` 
+3. Run ```PYTHONPATH=src pytest```
+## For djando tests
+1. Run ```PYTHONPATH=$PWD/src python src/manage.py test```
 
 [![Contributors](https://img.shields.io/github/contributors/Sanmeet-EWU/cscd-350-project-team-slippee)](https://github.com/Sanmeet-EWU/cscd-350-project-team-slippee/graphs/contributors)  
 ![Contributors](https://contrib.rocks/image?repo=Sanmeet-EWU/cscd-350-project-team-slippee)
