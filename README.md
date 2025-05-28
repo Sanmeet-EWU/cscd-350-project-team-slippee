@@ -16,3 +16,5 @@ The problem we are trying to solve is that most N64 emulators store the save dat
 The intended user for this tool is someone who is looking to switch their main emulator and keep there saves. It also is intended to be intuitive and easy to use to ensure that anyone can use it reguardless of their knowledge of computers.  
 
 ZELDAT aims to fix this problem by allowing seamless translation between any of the most common emulators. It extracts the core data of the save and allows conversion to a format that is compatible with the desired emulator. This way, you can float between emulators and figure out which one works best for you without losing progress in your game.
+
+[![Contributors](https://img.shields.io/github/contributors/Sanmeet-EWU/cscd-350-project-team-slippee)](https://github.com/Sanmeet-EWU/cscd-350-project-team-slippee/graphs/contributors)
