@@ -1,3 +1,5 @@
+![Tests](https://github.com/Sanmeet-EWU/cscd-350-project-team-slippee/blob/main/.github/workflows/tests.yml)
+
 <p align="center">
   <img src="1200px-SF643D_Slippy.webp" alt="logo" width="200" />
 </p>
