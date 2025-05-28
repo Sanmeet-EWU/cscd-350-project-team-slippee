@@ -28,4 +28,4 @@ jobs:
 
     - name: Run Tests
       run: |
-        PYTHONPATH=. pytest --maxfail=5 --disable-warnings
+        PYTHONPATH=src pytest --maxfail=5 --disable-warnings
