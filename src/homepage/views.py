@@ -25,6 +25,8 @@ def test_page(request):
 
 def translate(request):
     if request.method == "POST":
-        name = request.POST.get('name', 'Guest')
-        return HttpResponse(f"<p>{return_something(name)}</p>")
+        emu_from = request.POST.get('from', 'default_from')
+        emu_to = request.POST.get('to', 'default_to')
+        file_name = request.POST.get('file-input', 'default_file')
+        return HttpResponse(f"<p>{emu_from, emu_to, file_name}</p>")
 # Create your views here.
