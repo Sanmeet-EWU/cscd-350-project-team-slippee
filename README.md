@@ -24,7 +24,7 @@ ZELDAT aims to fix this problem by allowing seamless translation between any of 
 3. Run ```PYTHONPATH=src pytest```
 ## For django tests
 1. Change directory to location of manage.py (src)
-1. Run ```PYTHONPATH=$PWD/src python manage.py test ```
+1. Run ```python manage.py test ```
 
 [![Contributors](https://img.shields.io/github/contributors/Sanmeet-EWU/cscd-350-project-team-slippee)](https://github.com/Sanmeet-EWU/cscd-350-project-team-slippee/graphs/contributors)  
 ![Contributors](https://contrib.rocks/image?repo=Sanmeet-EWU/cscd-350-project-team-slippee)
