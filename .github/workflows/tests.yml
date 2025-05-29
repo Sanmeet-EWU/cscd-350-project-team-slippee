@@ -1,4 +1,4 @@
-name: Test on Push and Pull
+name: Tests Passing
 
 on:
   push:
