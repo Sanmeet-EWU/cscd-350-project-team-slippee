@@ -52,7 +52,7 @@ def clone_template(name: str) -> None:
             out.write(inp.read())
             return True
 
-def to_bizhawk(self, files: dict) -> dict:
+def to_bizhawk(files: dict) -> dict:
         '''
         Converts the given files to the BizHawk format
 

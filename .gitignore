@@ -3,3 +3,5 @@
 **/.coveragerc
 **/venv/
 **/__pycache__/
+**/lib/
+**/lib64/
