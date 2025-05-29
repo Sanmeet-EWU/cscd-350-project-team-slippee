@@ -1,2 +1,5 @@
 **/.DS_Store
+**/.coverage
+**/.coveragerc
+**/venv/
 **/__pycache__/
