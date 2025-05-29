@@ -19,8 +19,8 @@ ZELDAT aims to fix this problem by allowing seamless translation between any of 
 
 # To Run Tests
 ## For pytest tests
-1. pip3 install pytests 
-2. Change directory into project directory
+1. ```pip3 install pytest```
+2. Change directory into project directory (cscd-350-project-team-slippee)
 3. Run ```PYTHONPATH=src pytest```
 ## For django tests
 1. Change directory to location of manage.py (src)
