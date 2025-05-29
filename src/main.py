@@ -10,10 +10,13 @@ from emulators import emu
 from emulators import ares
 from emulators import bizhawk
 from emulators import retroarch
-from files import cmdutils
+from files import cmdutils, fileutils
+
 args = sys.argv[1:]
 
+
 def main():
+
     out = cmdutils.cmd_main(args)
     if out == -1:
         exit(-1)
@@ -33,7 +36,10 @@ def main():
         emu_to.set_outfile(rom[rom.rfind(".") + 1:])
     else:
         emu_to.set_outfile(emu_from.get_outfile())   
-     
+    
+    if isinstance(emu_to, bizhawk.BizHawk):
+        file_dict = fileutils.to_bizhawk(file_dict)
+    
     emu_to.convert_file(file_dict)
     
     
@@ -53,12 +59,12 @@ def parse_args(args: list) -> tuple:
                 print(e)
                 exit(-1)
         else:
-            print("No emulator specified")
+            print(args, "No input emulator specified")
             exit(-1)
     else:
-        print("No input emulator specified")
+        print(args,"No input emulator specified")
         exit(-1)
-
+    
     if "-t" in args:
         to_emu_index = args.index("-t")
         if to_emu_index + 1 < len(args) and args[to_emu_index + 1][0] != "-":
@@ -69,8 +75,11 @@ def parse_args(args: list) -> tuple:
                 print(e)
                 exit(-1)
         else:
-            print("No emulator specified")
+            print("No output emulator specified")
             exit(-1)
+    else:
+        print("No output emulator specified")
+        exit(-1)
     
     if "-i" in args:
         in_index = args.index("-i")

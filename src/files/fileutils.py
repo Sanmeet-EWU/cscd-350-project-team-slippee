@@ -51,3 +51,23 @@ def clone_template(name: str) -> None:
         with open(full_path, "wb") as out:
             out.write(inp.read())
             return True
+
+def to_bizhawk(self, files: dict) -> dict:
+        '''
+        Converts the given files to the BizHawk format
+
+        files
+            a dictionary containing the files to convert
+
+        Returns a dictionary containing the converted files
+        '''
+        if not isinstance(files, dict):
+            return files
+
+        if 'ram' in files.keys():
+            files['ram'] = self.endian_fix(files['ram'])
+        if 'flash' in files.keys():
+            files['flash'] = self.endian_fix(files['flash'])
+        
+        
+        return files

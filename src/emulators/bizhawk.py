@@ -109,8 +109,8 @@ class BizHawk(Emulator):
         files['eeprom'] = inpFile[bize:bizp]
         files['pak'] = inpFile[bizp:bizd]
         files['deeprom'] = inpFile[bizd:bizf]
-        files['flash'] = inpFile[bizf:bizr]
-        files['ram'] = inpFile[bizr:bizend]
+        files['flash'] = self.endian_fix(inpFile[bizf:bizr])
+        files['ram'] = self.endian_fix(inpFile[bizr:bizend])
 
         if self.is_empty(files['eeprom'], "eeprom") == 1:
             files.pop('eeprom')
