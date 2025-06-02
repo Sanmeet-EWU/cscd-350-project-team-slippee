@@ -35,8 +35,30 @@ def main():
         emu_to.set_outfile(emu_from.get_outfile())   
      
     emu_to.convert_file(file_dict)
-    
-    
+
+
+def main_web(args: list):
+    if args == -1:
+        exit(-1)
+
+    emu_from, emu_to, input_files, output_file, rom_location = parse_args(args)
+
+    file_dict = emu_from.split_file(input_files)
+    if output_file:
+        if rom_location:
+            rom = rom_location[rom_location.rfind("/") + 1:]
+            rom = rom[rom.rfind(".") + 1:]
+            emu_to.set_outfile(output_file[output_file.rfind("/") + 1:] + rom)
+        else:
+            emu_to.set_outfile(output_file[output_file.rfind("/") + 1: output_file.rfind(".")])
+    elif rom_location:
+        rom = rom_location[rom_location.rfind("/") + 1:]
+        emu_to.set_outfile(rom[rom.rfind(".") + 1:])
+    else:
+        emu_to.set_outfile(emu_from.get_outfile())
+
+    emu_to.convert_file(file_dict)
+
 
 def parse_args(args: list) -> tuple:
     '''
