@@ -8,4 +8,6 @@ urlpatterns = [
     path('index_body/', views.index_body, name='index_body'),
     path('test_page/', views.test_page, name='test_page'),
     path('translate/', views.translate, name='translate'),
+    path("download/", views.download_file, name="download_file"),
+
 ]
