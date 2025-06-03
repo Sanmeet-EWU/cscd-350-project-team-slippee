@@ -47,6 +47,15 @@ def main():
 def parse_args(args: list) -> tuple:
     '''
     Parses the command line arguments and returns the emulator objects and input files
+
+    args
+        The command line arguments passed to the script
+
+    Returns
+        A tuple containing the input emulator, output emulator, list of input files, output file name, and rom location
+
+    
+    If any required argument is missing, the function will print an error message and exit the program.
     '''
     emu_from, emu_to, input_files, output_file, rom_location = None, None, [], None, None
     if "-f" in args:
@@ -121,6 +130,12 @@ def get_emulator(emulator_name: str) -> emu.Emulator:
 
     emulator_name
         The name of the emulator to get
+
+    Returns
+        An instance of the emulator class corresponding to the given name
+    
+    Raises
+        ValueError: If the emulator name is not recognized
     '''
     if emulator_name.lower() in ["ares", "are"]:
         print("Ares")
