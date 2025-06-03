@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
   <script>
     document.body.addEventListener('htmx:configRequest', function (event) {
       const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]')?.value;
@@ -30,10 +29,8 @@
     <!-- Upload box -->
     <div class="upload-box">
       <label>Add Save Here</label>
-  <input type="file" name="savefile" id="file-input-1" required />
-        <input type="file" id="file-input-2" name="savefile2" style="display: none;" required />
-  </div>
-
+  <input type="file" name="savefile" id="file-input" required />
+    </div>
 
     <!-- Dropdowns -->
     <div class="dropdowns">
@@ -70,29 +67,4 @@
 
 
 </body>
-<script>
-htmx.onLoad(function(elt) {
-    let fromDropdown = document.querySelector("select[name='from']");
-    let toDropdown = document.querySelector("select[name='to']");
-    let secondInputDiv = document.getElementById("file-input-2");
-    let originalToOptions = Array.from(toDropdown.options).map(opt => opt.cloneNode(true));
-
-
-  fromDropdown.addEventListener("change", function () {
-      let selectedFrom = fromDropdown.value;
-      toDropdown.innerHTML = ""; // Clear existing options
-
-          originalToOptions.forEach(option => {
-        if (option.value === selectedFrom && option.value !== "") return; // skip same value
-        toDropdown.appendChild(option.cloneNode(true));
-      });
-    if (this.value === "Ares") {
-      secondInputDiv.style.display = "block";
-      secondInputDiv.required = true;
-    } else {
-      secondInputDiv.style.display = "none";
-      secondInputDiv.required = false;
-    }
-  }); })
-    </script>
 </html>

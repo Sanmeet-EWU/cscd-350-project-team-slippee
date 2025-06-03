@@ -64,6 +64,12 @@ main {
   gap: 0.5rem;
 }
 
+.upload-box > label {
+  align-self: center;  /* centers horizontally in flex column */
+  text-align: center;  /* center text inside label */
+  width: 100%;        /* so text-align center works */
+}
+
 .nav-bar {
   display: flex;
   flex-direction: row;
