@@ -10,10 +10,13 @@ from emulators import emu
 from emulators import ares
 from emulators import bizhawk
 from emulators import retroarch
-from files import cmdutils
+from files import cmdutils, fileutils
+
 args = sys.argv[1:]
 
+
 def main():
+
     out = cmdutils.cmd_main(args)
     if out == -1:
         exit(-1)
@@ -33,7 +36,10 @@ def main():
         emu_to.set_outfile(rom[rom.rfind(".") + 1:])
     else:
         emu_to.set_outfile(emu_from.get_outfile())   
-     
+    
+    if isinstance(emu_to, bizhawk.BizHawk):
+        file_dict = fileutils.to_bizhawk(file_dict)
+    
     emu_to.convert_file(file_dict)
 
 
@@ -63,6 +69,15 @@ def main_web(args: list):
 def parse_args(args: list) -> tuple:
     '''
     Parses the command line arguments and returns the emulator objects and input files
+
+    args
+        The command line arguments passed to the script
+
+    Returns
+        A tuple containing the input emulator, output emulator, list of input files, output file name, and rom location
+
+    
+    If any required argument is missing, the function will print an error message and exit the program.
     '''
     emu_from, emu_to, input_files, output_file, rom_location = None, None, [], None, None
     if "-f" in args:
@@ -75,12 +90,12 @@ def parse_args(args: list) -> tuple:
                 print(e)
                 exit(-1)
         else:
-            print("No emulator specified")
+            print(args, "No input emulator specified")
             exit(-1)
     else:
-        print("No input emulator specified")
+        print(args,"No input emulator specified")
         exit(-1)
-
+    
     if "-t" in args:
         to_emu_index = args.index("-t")
         if to_emu_index + 1 < len(args) and args[to_emu_index + 1][0] != "-":
@@ -91,8 +106,11 @@ def parse_args(args: list) -> tuple:
                 print(e)
                 exit(-1)
         else:
-            print("No emulator specified")
+            print("No output emulator specified")
             exit(-1)
+    else:
+        print("No output emulator specified")
+        exit(-1)
     
     if "-i" in args:
         in_index = args.index("-i")
@@ -134,6 +152,12 @@ def get_emulator(emulator_name: str) -> emu.Emulator:
 
     emulator_name
         The name of the emulator to get
+
+    Returns
+        An instance of the emulator class corresponding to the given name
+    
+    Raises
+        ValueError: If the emulator name is not recognized
     '''
     if emulator_name.lower() in ["ares", "are"]:
         print("Ares")

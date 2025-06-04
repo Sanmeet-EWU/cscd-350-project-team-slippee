@@ -1,4 +1,4 @@
-![Tests](https://github.com/Sanmeet-EWU/cscd-350-project-team-slippee/actions/workflows/tests.yml/badge.svg)
+![Tests Passing](https://github.com/Sanmeet-EWU/cscd-350-project-team-slippee/actions/workflows/tests.yml/badge.svg)
 
 <p align="center">
   <img src="1200px-SF643D_Slippy.webp" alt="logo" width="200" />
@@ -16,6 +16,15 @@ The problem we are trying to solve is that most N64 emulators store the save dat
 The intended user for this tool is someone who is looking to switch their main emulator and keep there saves. It also is intended to be intuitive and easy to use to ensure that anyone can use it reguardless of their knowledge of computers.  
 
 ZELDAT aims to fix this problem by allowing seamless translation between any of the most common emulators. It extracts the core data of the save and allows conversion to a format that is compatible with the desired emulator. This way, you can float between emulators and figure out which one works best for you without losing progress in your game.
+
+# To Run Tests
+## For pytest tests
+1. ```pip3 install pytest```
+2. Change directory into project directory (cscd-350-project-team-slippee)
+3. Run ```PYTHONPATH=src pytest```
+## For django tests
+1. Change directory to location of manage.py (src)
+1. Run ```python manage.py test```
 
 [![Contributors](https://img.shields.io/github/contributors/Sanmeet-EWU/cscd-350-project-team-slippee)](https://github.com/Sanmeet-EWU/cscd-350-project-team-slippee/graphs/contributors)  
 ![Contributors](https://contrib.rocks/image?repo=Sanmeet-EWU/cscd-350-project-team-slippee)

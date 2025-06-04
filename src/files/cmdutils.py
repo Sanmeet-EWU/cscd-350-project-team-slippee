@@ -5,10 +5,8 @@ def cmd_main(argv):
     elif "-h" in argv or "--help" in argv or "-help" in argv or "--h" in argv:
         print_usage()
         return -1
-    elif "-v" in argv or "--version" in argv:
-        print(version())
-        return -1
-    
+    else:
+        return 0    
 
 def print_usage():
     '''
@@ -19,7 +17,6 @@ Usage: python main.py [options]
 
 Options:
   -h, --help, -help, --h       Show this help message and exit
-  -v, --version                Show the version of the program
   -f <emulator>                Specify the input emulator
   -t <emulator>                Specify the output emulator
   -i <input_file>              Specify the input file(s)
@@ -44,10 +41,3 @@ Supported emulators (valid options):
 Example:
     python main.py -f ares -t bizhawk -i 'Dr. Mario 64 (USA).eeprom' -o 'Dr. Mario 64 (USA).SaveRAM' -r 'Dr. Mario 64 (USA).z64'
 ''')
-
-    
-def version():
-    """
-    Returns the version of the current package.
-    """
-    return "0.1.0"

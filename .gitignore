@@ -1,2 +1,9 @@
 **/.DS_Store
+**/.coverage
+**/.coveragerc
+**/venv/
 **/__pycache__/
+**/lib/
+**/lib64/
+**/bin
+**/pyvenv.cfg

@@ -1,4 +1,4 @@
-name: Test on Push and Pull
+name: Tests Passing
 
 on:
   push:
@@ -29,4 +29,4 @@ jobs:
     - name: Run Tests
       run: |
         PYTHONPATH=$PWD/src pytest --maxfail=5 --disable-warnings
-        PYTHONPATH=$PWD/src python src/manage.py test
+        cd src && python manage.py test
