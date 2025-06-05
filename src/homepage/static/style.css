@@ -108,6 +108,10 @@ main {
   text-align: center;
 }
 
+.guide-pictures {
+  width: 500px;
+}
+
 .dropdowns {
   display: flex;
   flex-direction: row;

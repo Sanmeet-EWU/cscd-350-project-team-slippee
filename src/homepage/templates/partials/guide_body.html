@@ -11,12 +11,34 @@
       </ul>
     <h2>Ares</h2>
     <ul>
-      <li>Convert save files to different formats.</li>
-      <li>Easy-to-use interface.</li>
-      <li>Fast processing times.</li>
+      <li>Ares saves are kept in the same directory as the ROM you made the save with</li>
+      <li>The files will have the same name as the ROM, with different extensions</li>
+      <li>There may be 1 or 2 files, upload whatever you find</li>
     </ul>
-      <h2>Bizhawk</h2>
+      <h2>Bizhawk/Emuhawk</h2>
+    <ul>
+      <li>Go to Emuhawk's file location (use the desktop or start menu shortcut)
+          {% load static %}
+        <img src="{% static '../static/find_emu_hawk_path.png' %}" alt="find emuhawk path" class="guide-pictures"></li>
+      <li>Go to N64/SaveRAM within Emuhawk's folder
+                  {% load static %}
+        <img src="{% static '../static/goto_n64_emuhawk.png' %}" alt="go to n64 emuhawk" class="guide-pictures">
+      <img src="{% static '../static/goto_saveram_emuhawk.png' %}" alt="go to saveram emuhawk" class="guide-pictures"></li>
+      <li>The file name will be ROM_name.saveRAM (e.g. Super_Mario_64.saveRAM)</li>
+    </ul>
       <h2>Retroarch</h2>
+    <ul>
+      <li>Go to Retroarch's file location (use the desktop or start menu shortcut)
+                  {% load static %}
+        <img src="{% static '../static/find_Retroarch.png' %}" alt="find Retroarch" class="guide-pictures"></li>
+      <li>Go to the saves folder</li>
+                  {% load static %}
+        <img src="{% static '../static/goto_saves_retroarch.png' %}" alt="go to saves Retroarch" class="guide-pictures">
+      <li>From here, go to the folder named after the core you saved your game in
+                {% load static %}
+        <img src="{% static '../static/goto_desired_core_retroarch.png' %}" alt="go to desired core Retroarch" class="guide-pictures"></li>
+      <li>The file name will be ROM_name.SRM</li>
+    </ul>
   </div>
 
 </body>
