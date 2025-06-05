@@ -31,7 +31,7 @@
     <div class="upload-box">
       <label>Add Save Here</label>
   <input type="file" name="savefile" id="file-input-1" required />
-        <input type="file" id="file-input-2" name="savefile2" style="display: none;" required />
+  <input type="file" id="file-input-2" name="savefile2" style="display: none;"/>
   </div>
 
 
@@ -88,7 +88,6 @@ htmx.onLoad(function(elt) {
       });
     if (this.value === "Ares") {
       secondInputDiv.style.display = "block";
-      secondInputDiv.required = true;
     } else {
       secondInputDiv.style.display = "none";
       secondInputDiv.required = false;
