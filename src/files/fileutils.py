@@ -38,16 +38,25 @@ def writeout(name: str, file: bytes) -> None:
     with open(full_path, "wb") as out:
         out.write(file)
 
-def clone_template(name: str) -> None:
+def clone_template(name: str, overwrite: bool) -> None:
     '''
     Clones the template file to the given name
     
     name
         the name of the file to clone to
+
+    overwrite
+        whether to do template 1 or 2
     '''
     full_path = os.path.join(output_dir, name)
+    temp = ""
+    if overwrite:
+        temp = "temp2"
+    else:
+        temp = "temp"
 
-    with open("src/template/temp", "rb") as inp:
+
+    with open(f"src/template/{temp}", "rb") as inp:
         with open(full_path, "wb") as out:
             out.write(inp.read())
             return True

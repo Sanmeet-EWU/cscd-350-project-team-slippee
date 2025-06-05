@@ -55,7 +55,7 @@ class RetroArch(Emulator):
         - {filename}.srm
 
         '''
-        fileutils.clone_template(f"{self.outfile}.srm")
+        fileutils.clone_template(f"{self.outfile}.srm", True)
         counter = 0
 
         with open(f"{output_dir}/{self.outfile}.srm", "r+b") as out:

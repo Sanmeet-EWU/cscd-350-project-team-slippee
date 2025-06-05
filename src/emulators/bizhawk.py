@@ -55,7 +55,7 @@ class BizHawk(Emulator):
         - {filename}.SaveRAM
 
         '''
-        fileutils.clone_template(f"{self.outfile}.SaveRAM")
+        fileutils.clone_template(f"{self.outfile}.SaveRAM", False)
         counter = 0
 
         with open(f"{output_dir}/{self.outfile}.SaveRAM", "r+b") as out:
