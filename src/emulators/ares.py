@@ -19,6 +19,7 @@ from files import fileutils
 # | flash        | 128 KB               |                                             |
 # | ram          | 32 KB                |                                             |
 # + ------------ + -------------------- + ------------------------------------------- +
+
 class Ares(Emulator):
     '''
     This is a class for the ares emulator
@@ -61,13 +62,9 @@ class Ares(Emulator):
         '''
         counter = 0
         # All three of these write to an eeprom file
-        # 512 B
+        # 512 B and 2 KB
         if 'eeprom' in inputFiles.keys():
             fileutils.writeout(f"{self.outfile}.eeprom", inputFiles['eeprom'])
-            counter += 1
-        # 2 KB
-        if 'leeprom' in inputFiles.keys():
-            fileutils.writeout(f"{self.outfile}.eeprom", inputFiles['leeprom'])
             counter += 1
         # 96 KB
         if 'deeprom' in inputFiles.keys():
@@ -104,7 +101,7 @@ class Ares(Emulator):
         for eeprom which has three different sizes, they are separated  
         with a different key for each:
         - eeprom for 512 B file
-        - leeprom for 2 KB file
+        - eeprom for 2 KB file
         - deeprom for 96 KB file
         '''
         files = {}
@@ -135,7 +132,7 @@ class Ares(Emulator):
                     files['eeprom'] = temp
 
                 elif f.endswith('eeprom') and len(temp) == 0x800: # 2 KB eeprom 
-                    files['leeprom'] = temp
+                    files['eeprom'] = temp
 
                 elif f.endswith('eeprom') and len(temp) == 0x18000: # 96 KB eeprom
                     files['deeprom'] = temp

@@ -76,12 +76,12 @@ class BizHawk(Emulator):
 
             if 'flash' in inputFiles.keys():
                 out.seek(bizf)
-                out.write(inputFiles['flash'])
+                out.write(self.endian_fix(inputFiles['flash']))
                 counter += 1
 
             if 'ram' in inputFiles.keys():
                 out.seek(bizr)
-                out.write(inputFiles['ram'])
+                out.write(self.endian_fix(inputFiles['ram']))
                 counter += 1
 
         if counter == 0:
@@ -120,9 +120,9 @@ class BizHawk(Emulator):
             files.pop('pak')
         if self.is_empty(files['deeprom'], "deeprom") == 1:
             files.pop('deeprom')
-        if self.is_empty(files['flash'], "flash") == 1:
+        if self.is_empty(self.endian_fix(files['flash']), "flash") == 1:
             files.pop('flash')
-        if self.is_empty(files['ram'], "ram") == 1:
+        if self.is_empty(self.endian_fix(files['ram']), "ram") == 1:
             files.pop('ram')
 
         return files
