@@ -1,5 +1,4 @@
 import os
-from emulators import bizhawk
 
 base_dir = os.getcwd()
 if os.path.basename(base_dir) == "src":
