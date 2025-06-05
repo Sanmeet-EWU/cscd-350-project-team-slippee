@@ -104,8 +104,7 @@ main {
 }
 
 .guide-content h1,
-.guide-content h2,
-.guide-content p {
+.guide-content h2{
   text-align: center;
 }
 
