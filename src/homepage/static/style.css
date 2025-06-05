@@ -7,7 +7,7 @@ body, html {
 
 /* Full-page background with Flexbox centering */
 .background {
-  background-color: #00c34f;
+  background-color: #10652e;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -26,15 +26,15 @@ header {
 
 header h1 {
   font-size: 3rem;
-  color: #0a2f24;
+  color: #000000;
   text-shadow: 2px 2px #00000020;
 }
 
 .frog-logo {
   position: absolute;
   right: 2rem;
-  top: 1rem;
-  width: 120px;
+  /*top: 1rem;*/
+  width: 80px;
   height: auto;
 }
 
@@ -75,7 +75,7 @@ main {
   flex-direction: row;
   gap: 30px; /* space between buttons */
   margin-bottom: 20px;
-  background: #1b741d;
+  background: #ffffff;
   align-items: center;
   justify-content: center;
   padding: 5px 10px;
@@ -104,8 +104,7 @@ main {
 }
 
 .guide-content h1,
-.guide-content h2,
-.guide-content p {
+.guide-content h2{
   text-align: center;
 }
 
