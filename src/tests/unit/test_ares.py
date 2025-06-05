@@ -132,7 +132,7 @@ class TestAres:
         file = self.inputFiles[1]
 
         file_dictionary = self.test_ares.split_file([ file ])
-        assert file_dictionary['leeprom'] == self.readin_fortests(file)
+        assert file_dictionary['eeprom'] == self.readin_fortests(file)
     
     def test_split_file_eeprom_96KB(self):
         file = self.inputFiles[2]

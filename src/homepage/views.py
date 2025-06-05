@@ -32,25 +32,31 @@ def test_page(request):
 def translate(request):
     if request.method == "POST":
         uploaded_file = request.FILES.get("savefile")
+        if request.FILES.get("savefile2"):
+            uploaded_files = [uploaded_file, request.FILES.get("savefile2")]
+        else:
+            uploaded_files = [uploaded_file,]
         from_emulator = request.POST.get("from")
         to_emulator = request.POST.get("to")
-        temp = tempfile.gettempdir() + "/zeldat/"
-        if uploaded_file:
-            print(f"File size: {uploaded_file.size} bytes")
+        temp = tempfile.gettempdir()
 
         if not uploaded_file or not from_emulator or not to_emulator:
             return HttpResponseBadRequest("Missing data.")
 
         # Save the uploaded file (for testing)
-        with open(f"{temp}{uploaded_file.name}", "wb+") as destination:
-            for chunk in uploaded_file.chunks():
-                destination.write(chunk)
+        for f in uploaded_files:
+            with open(f"{temp}{f.name}", "wb+") as destination:
+                for chunk in f.chunks():
+                    destination.write(chunk)
 
-        input_files = f"{temp}{uploaded_file.name}"
+        input_files = []
+        for f in uploaded_files:
+            input_files.append(f"{temp}{f.name}")
+
         print("INPUT FILE", input_files)
         arg_list = ["-f", from_emulator,
                     "-t", to_emulator,
-                    "-i", input_files,
+                    "-i", input_files if len(input_files) > 1 else input_files[0],
                     "-o", f"translated_{uploaded_file.name}",]
         print(arg_list)
         mn.main_web(arg_list)
