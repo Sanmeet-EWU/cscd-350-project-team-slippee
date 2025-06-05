@@ -37,9 +37,6 @@ def main():
     else:
         emu_to.set_outfile(emu_from.get_outfile())   
     
-    if isinstance(emu_to, bizhawk.BizHawk):
-        file_dict = fileutils.to_bizhawk(file_dict)
-    
     emu_to.convert_file(file_dict)
 
 
