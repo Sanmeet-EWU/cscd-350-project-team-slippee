@@ -7,7 +7,7 @@ body, html {
 
 /* Full-page background with Flexbox centering */
 .background {
-  background-color: #10652e;
+  background-color: #4b8c60;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
