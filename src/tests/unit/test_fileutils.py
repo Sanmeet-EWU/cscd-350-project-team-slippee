@@ -19,7 +19,7 @@ def test_read_file_triggers_generic_exception():
 
 def test_clone_template():
     # Test cloning a template file
-    fileutils.clone_template("test_clone")
+    fileutils.clone_template("test_clone", True)
     cloned_file_path = os.path.join(fileutils.output_dir, "test_clone")
     assert os.path.exists(cloned_file_path)
     
