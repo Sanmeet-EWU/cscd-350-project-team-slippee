@@ -1,3 +1,23 @@
+## Obtaining Source Code
+Simply clone the repository, all source code for the project is contained there.
+
+## Directory Layout
+HTML: /src/homepage/templates
+CSS, JS, and pictures: /src/homepage/static
+Main Django management tool: /src/manage.py
+WebUI tests: /src/homepage/tests
+File algorithms: /src/emulators
+File algorithm tests: /src/tests
+Github Actions tests: /.github/workflows/tests.yml
+
+## Creating a Build
+This software is written entirely in interpreted languages, so nothing has to be compiled. to run the software, refer to readme.md
+
+## Testing
+Please refer to readme.md for information on how to run tests. Tests are also run automatically via github actions when the repository is updated.
+When adding new tests, please make sure they are in the relevant directories. Refer to the above directories for guidance.
+
+## File Algorithms
 Looking at N64 save types, there are a total of four normal save types. These are eeprom, pak, sram and flash.
 All data on types of saves found here: http://micro-64.com/database/gamesave.shtml
 **Note**: All sizes in Kbit are from the source above.
