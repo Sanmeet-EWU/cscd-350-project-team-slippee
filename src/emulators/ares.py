@@ -14,10 +14,10 @@ from files import fileutils
 # + ------------ + -------------------- + ------------------------------------------- +
 # | Type of Data | Size                 | Notes                                       |
 # + ------------ + -------------------- + ------------------------------------------- +
-# | eeprom       | 512 B, 2 KB or 96 KB | 3 Different Sizes, 96 KB for Dezaemon 3D    |
+# | eeprom       | 512 B, 2 KB          | 2 Different Sizes                           |
 # | pak          | 32 KB                | controller pak saves                        |
 # | flash        | 128 KB               |                                             |
-# | ram          | 32 KB                |                                             |
+# | ram          | 32 KB or 96 KB       | 96 KB for Dezaemon 3D                       |
 # + ------------ + -------------------- + ------------------------------------------- +
 
 class Ares(Emulator):
@@ -30,13 +30,13 @@ class Ares(Emulator):
     - eeprom
         - 512 B
         - 2 KiB
-        - 96 KiB
     - flash
         - 128 KiB
     - pak
         - 32 KiB
     - rom
         - 32 KiB
+        - 96 KiB
 
     It allows for writing to the same file types
     '''
@@ -52,14 +52,15 @@ class Ares(Emulator):
         The files that get written to are as follows:
         - {filename}.eeprom  
             **Note**: size is 512B or 2KB  
-            **Note**: a special eeprom exists for Dezaemon 3D with size 96 KB
 
         - {filename}.flash
             
         - {filename}.pak
 
         - {filename}.ram
-        '''
+            **Note**: a special ram exists for Dezaemon 3D with size 96 KB
+
+                '''
         counter = 0
         # All three of these write to an eeprom file
         # 512 B and 2 KB
@@ -67,8 +68,8 @@ class Ares(Emulator):
             fileutils.writeout(f"{self.outfile}.eeprom", inputFiles['eeprom'])
             counter += 1
         # 96 KB
-        if 'deeprom' in inputFiles.keys():
-            fileutils.writeout(f"{self.outfile}.eeprom", inputFiles['deeprom'])
+        if 'dram' in inputFiles.keys():
+            fileutils.writeout(f"{self.outfile}.ram", inputFiles['dram']) # Gets written to a ram file instead of an eeprom file
             counter += 1
         # Writes to a flash file
         if 'flash' in inputFiles.keys():
@@ -96,13 +97,16 @@ class Ares(Emulator):
         file
             the list of file names to read in
 
-        Returns a dictionary containing each file
+        Returns
+            a dictionary containing each file
         
         for eeprom which has three different sizes, they are separated  
         with a different key for each:
-        - eeprom for 512 B file
-        - eeprom for 2 KB file
-        - deeprom for 96 KB file
+        - eeprom for 512  and 2 KB file
+
+        ram has two different sizes 
+        - 32 KB file
+        - 96 KB file
         '''
         files = {}
         
@@ -134,8 +138,8 @@ class Ares(Emulator):
                 elif f.endswith('eeprom') and len(temp) == 0x800: # 2 KB eeprom 
                     files['eeprom'] = temp
 
-                elif f.endswith('eeprom') and len(temp) == 0x18000: # 96 KB eeprom
-                    files['deeprom'] = temp
+                elif f.endswith('ram') and len(temp) == 0x18000: # 96 KB eeprom
+                    files['dram'] = temp
 
                 elif f.endswith('flash'):
                     files['flash'] = temp

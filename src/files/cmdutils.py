@@ -1,4 +1,11 @@
-def cmd_main(argv):
+def cmd_main(argv: list) -> int:
+    '''
+    Parses the arguments, and tells main to stop if no arguments are provided, or if a help argument is provided.
+    
+    Returns:
+        -1 if usage is requested or if no arguments are provided
+        0 if arguments are valid and usage is not requested
+    '''
     if len(argv) == 0:
         print_usage()
         return -1
@@ -8,7 +15,7 @@ def cmd_main(argv):
     else:
         return 0    
 
-def print_usage():
+def print_usage() -> None:
     '''
     Prints the usage of the program
     '''

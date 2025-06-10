@@ -30,7 +30,7 @@ retend = 0x48800 # End of File
 # + ------------ + ------------ + -------------- + ---------------- + --------------------------------------------- +
 # | eeprom       | 0x0          | 0x200 or 0x800 | 512 B or 2,048 B | 2 different sizes                             |
 # | pak          | 0x800        | 0x8800         | 32,768 B         |                                               |
-# | eeprom       | 0x8800       | 0x20800        | 98,304 B         | For one specific game: Dezaemon 3D            |
+# | ram          | 0x8800       | 0x20800        | 98,304 B         | For one specific game: Dezaemon 3D            |
 # | ram          | 0x20800      | 0x28800        | 32,768 B         | Notably different Endianness than ares .ram   |
 # | flash        | 0x28800      | 0x48800        | 131,072 B        | Notably different Endianness than ares .flash |
 # + ------------ + ------------ + -------------- + ---------------- + --------------------------------------------- +
@@ -69,9 +69,9 @@ class RetroArch(Emulator):
                 out.write(inputFiles['pak'])
                 counter += 1
 
-            if 'deeprom' in inputFiles.keys():
+            if 'dram' in inputFiles.keys():
                 out.seek(retd)
-                out.write(inputFiles['deeprom'])
+                out.write(inputFiles['dram'])
                 counter += 1
 
             if 'flash' in inputFiles.keys():
@@ -108,7 +108,7 @@ class RetroArch(Emulator):
 
         files['eeprom'] = inpFile[rete:retp]
         files['pak'] = inpFile[retp:retd]
-        files['deeprom'] = inpFile[retd:retr]
+        files['dram'] = inpFile[retd:retr]
         files['ram'] = self.endian_fix(inpFile[retr:retf])
         files['flash'] = self.endian_fix(inpFile[retf:retend])
 
@@ -118,8 +118,8 @@ class RetroArch(Emulator):
             files['eeprom'] = inpFile[rete:0x200]
         if self.is_empty(files['pak'], "pak") == 1:
             files.pop('pak')
-        if self.is_empty(files['deeprom'], "deeprom") == 1:
-            files.pop('deeprom')
+        if self.is_empty(files['dram'], "dram") == 1 or "Daezmon" not in file[0]: # Fix a problem with non empty sections
+            files.pop('dram')
         if self.is_empty(self.endian_fix(files['flash']), "flash") == 1:
             files.pop('flash')
         if self.is_empty(self.endian_fix(files['ram']), "ram") == 1:
@@ -150,7 +150,7 @@ class RetroArch(Emulator):
                 temp = inp.read(0x8000)
                 if temp == string:
                     return 1
-            elif type == "deeprom":
+            elif type == "dram":
                 inp.seek(0x8800)
                 temp = inp.read(0x18000)
                 if temp == string:

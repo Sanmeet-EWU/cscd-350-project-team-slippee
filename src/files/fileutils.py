@@ -12,6 +12,11 @@ def readin(file: str) -> bytes:
     '''
     Reads in the bytes from the given file
 
+    file
+        the file to read in
+
+    Returns the bytes read from the file, or an empty byte string if the file does not exist
+        or an exception occurs
     '''
     try:
         with open(file, "rb") as inp:

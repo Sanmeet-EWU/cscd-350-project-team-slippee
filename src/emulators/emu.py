@@ -7,7 +7,7 @@ class Emulator(ABC):
 
     # To be defined in child classes
     @abstractmethod
-    def convert_file(self, inputFiles: dict) -> bool: # Might Remove this one
+    def convert_file(self, inputFiles: dict) -> bool: 
         '''
         abstract method to be defined in child classes
         
@@ -15,6 +15,8 @@ class Emulator(ABC):
 
         inputFiles
             a dictionary of all the save types
+
+        returns a boolean indicating whether the conversion was successful
         '''
         pass
 
