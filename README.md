@@ -17,6 +17,14 @@ The intended user for this tool is someone who is looking to switch their main e
 
 ZELDAT aims to fix this problem by allowing seamless translation between any of the most common emulators. It extracts the core data of the save and allows conversion to a format that is compatible with the desired emulator. This way, you can float between emulators and figure out which one works best for you without losing progress in your game.
 
+# To Use Program
+1. Clone the repository to a local machine
+2. In the cloned directory, run ```pip install -r requirements.txt```
+3. In /src, run ```python manage.py runserver```
+4. In a browser, go to the address shown in the terminal, or http://127.0.0.1:8000/
+5. For information on how to use the program, navigate to the guide page
+
+
 # To Run Tests
 ## For pytest tests
 1. ```pip3 install pytest```
