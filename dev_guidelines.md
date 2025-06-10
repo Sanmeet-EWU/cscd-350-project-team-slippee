@@ -3,11 +3,17 @@ Simply clone the repository, all source code for the project is contained there.
 
 ## Directory Layout
 HTML: /src/homepage/templates
+
 CSS, JS, and pictures: /src/homepage/static
+
 Main Django management tool: /src/manage.py
+
 WebUI tests: /src/homepage/tests
+
 File algorithms: /src/emulators
+
 File algorithm tests: /src/tests
+
 Github Actions tests: /.github/workflows/tests.yml
 
 ## Creating a Build
