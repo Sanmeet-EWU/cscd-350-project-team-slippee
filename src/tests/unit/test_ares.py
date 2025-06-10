@@ -17,7 +17,7 @@ class TestAres:
         self.test_ares = ares.Ares()
         self.inputFiles = ["src/tests/tests.eeprom",
                            "src/tests/tests1.eeprom",
-                           "src/tests/tests2.eeprom",
+                           "src/tests/tests2.ram",
                            "src/tests/tests.flash",
                            "src/tests/tests.pak",
                            "src/tests/tests.ram"]
@@ -138,7 +138,7 @@ class TestAres:
         file = self.inputFiles[2]
 
         file_dictionary = self.test_ares.split_file([ file ])
-        assert file_dictionary['deeprom'] == self.readin_fortests(file)
+        assert file_dictionary['dram'] == self.readin_fortests(file)
     
     def test_split_file_flash(self):
        
@@ -215,7 +215,7 @@ class TestAres:
         assert valid == True
         assert number == 1
 
-        assert self.readin_fortests(f"src/output/{outfile}.eeprom") == self.readin_fortests(file)
+        assert self.readin_fortests(f"src/output/{outfile}.ram") == self.readin_fortests(file)
     
     def test_convert_file_flash(self):
         outfile = "test_output"
